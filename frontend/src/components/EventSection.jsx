@@ -101,24 +101,22 @@ const EventSection = () => {
   const [categories, setCategories] = useState([]);
   const [events, setEvents] = useState([]);
 
-
   useEffect(() => {
-    fetch('http://localhost:1337/api/events?populate=*')
+    fetch("http://localhost:1337/api/events?populate=*")
       .then((response) => response.json())
       .then((data) => {
-        setEvents(data.data)  
+        setEvents(data.data);
         console.log(data.data);
-          
       });
 
-      fetch('http://localhost:1337/api/categories?populate=*')
+    fetch("http://localhost:1337/api/categories")
       .then((response) => response.json())
       .then((data) => {
-        setCategories(data.data)    
+        setCategories(data.data);
       });
-
-      
   }, []);
+
+
   const filteredEvents = events.filter(
     (event) => selectedCategory === "all" || event.category === selectedCategory
   );
@@ -132,9 +130,9 @@ const EventSection = () => {
         {categories.map((category) => (
           <button
             key={category.id}
-            onClick={() => setSelectedCategory(category.id)}
+            onClick={() => setSelectedCategory(category.category_id)}
             className={`px-4 py-2 rounded-full text-sm ${
-              selectedCategory === category.id
+              selectedCategory === category.category_id
                 ? "bg-blue-600 text-white"
                 : "bg-gray-100 text-gray-800 hover:bg-gray-200"
             }`}
