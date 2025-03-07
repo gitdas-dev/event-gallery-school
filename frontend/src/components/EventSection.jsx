@@ -2,104 +2,12 @@ import React, { useEffect, useState } from "react";
 import EventPhotos from "./EventPhotos";
 import { Calendar } from "lucide-react";
 
-// const events = [
-//   {
-//     id: 1,
-//     title: "NCC (National cadet corps)",
-//     date: "25 Jan 2024",
-//     image:
-//       "https://images.unsplash.com/photo-1526628953301-3e589a6a8b74?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
-//     category: "ncc",
-//     images: [
-//       "https://images.unsplash.com/photo-1526628953301-3e589a6a8b74?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
-//       "https://images.unsplash.com/photo-1527891751199-7225231a68dd?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
-//       "https://images.unsplash.com/photo-1517048676732-d65bc937f952?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
-//       "https://images.unsplash.com/photo-1517486808906-6ca8b3f04846?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
-//     ],
-//   },
-//   {
-//     id: 2,
-//     title: "Science exhibition",
-//     date: "15 Jan 2024",
-//     image:
-//       "https://images.unsplash.com/photo-1564981797816-1043664bf78d?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
-//     category: "science",
-//     images: [
-//       "https://images.unsplash.com/photo-1564981797816-1043664bf78d?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
-//       "https://images.unsplash.com/photo-1532094349884-543bc11b234d?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
-//       "https://images.unsplash.com/photo-1532187863486-abf9dbad1b69?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
-//     ],
-//   },
-//   {
-//     id: 3,
-//     title: "Alumni association",
-//     date: "10 Jan 2024",
-//     image:
-//       "https://images.unsplash.com/photo-1524178232363-1fb2b075b655?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
-//     category: "alumni",
-//     images: [
-//       "https://images.unsplash.com/photo-1524178232363-1fb2b075b655?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
-//       "https://images.unsplash.com/photo-1523580494863-6f3031224c94?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
-//       "https://images.unsplash.com/photo-1517486808906-6ca8b3f04846?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
-//     ],
-//   },
-//   {
-//     id: 4,
-//     title: "Cleanliness drive",
-//     date: "05 Jan 2024",
-//     image:
-//       "https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
-//     category: "cleanliness",
-//     images: [
-//       "https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
-//       "https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
-//       "https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
-//     ],
-//   },
-//   {
-//     id: 5,
-//     title: "Plantation day",
-//     date: "01 Jan 2024",
-//     image:
-//       "https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
-//     category: "plantation",
-//     images: [
-//       "https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
-//       "https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
-//       "https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
-//     ],
-//   },
-//   {
-//     id: 6,
-//     title: "Annual day",
-//     date: "20 Dec 2023",
-//     image:
-//       "https://images.unsplash.com/photo-1540575467063-178a50c2df87?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
-//     category: "annual",
-//     images: [
-//       "https://images.unsplash.com/photo-1540575467063-178a50c2df87?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
-//       "https://images.unsplash.com/photo-1523580494863-6f3031224c94?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
-//       "https://images.unsplash.com/photo-1517486808906-6ca8b3f04846?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
-//     ],
-//   },
-// ];
-
-// const categories = [
-//   { id: "all", label: "All" },
-//   { id: "ncc", label: "NCC National cadet corps" },
-//   { id: "plantation", label: "Plantation day" },
-//   { id: "annual", label: "Annual day" },
-//   { id: "sports", label: "Sports day" },
-//   { id: "science", label: "Science exhibition" },
-//   { id: "cleanliness", label: "Cleanliness drive" },
-//   { id: "alumni", label: "Alumni association" },
-// ];
 const EventSection = () => {
+  const [categories, setCategories] = useState([]);
+  const [events, setEvents] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState("all");
   const [showMore, setShowMore] = useState(false);
   const [selectedEvent, setSelectedEvent] = useState(null);
-  const [categories, setCategories] = useState([]);
-  const [events, setEvents] = useState([]);
 
   useEffect(() => {
     fetch("http://localhost:1337/api/events?populate=*")
@@ -116,7 +24,6 @@ const EventSection = () => {
       });
   }, []);
 
-
   const filteredEvents = events.filter(
     (event) => selectedCategory === "all" || event.category === selectedCategory
   );
@@ -129,7 +36,7 @@ const EventSection = () => {
       <div className="flex flex-wrap gap-4 mb-8 justify-start px-32">
         {categories.map((category) => (
           <button
-            key={category.id}
+            key={category.category_id}
             onClick={() => setSelectedCategory(category.category_id)}
             className={`px-4 py-2 rounded-full text-sm ${
               selectedCategory === category.category_id
