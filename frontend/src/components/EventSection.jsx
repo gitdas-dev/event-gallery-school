@@ -14,7 +14,6 @@ const EventSection = () => {
       .then((response) => response.json())
       .then((data) => {
         setEvents(data.data);
-        console.log(data.data);
       });
 
     fetch("http://localhost:1337/api/categories")
