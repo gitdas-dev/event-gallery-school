@@ -6,13 +6,9 @@ const EventPhotos = ({ event, onClose }) => {
 
   const nextImage = () => {
     setCurrImgIndex((prev) => (prev + 1) % event.images.length);
-    setSelectedThumbnail((prev) => (prev + 1) % event.images.length);
   };
   const prevImage = () => {
     setCurrImgIndex((prev) =>
-      prev === 0 ? event.images.length - 1 : prev - 1
-    );
-    setSelectedThumbnail((prev) =>
       prev === 0 ? event.images.length - 1 : prev - 1
     );
   };
