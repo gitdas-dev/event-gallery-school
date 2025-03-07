@@ -39,14 +39,12 @@ const EventPhotos = ({ event, onClose }) => {
         <h2 className="text-2xl font-bold mb-2">{event.title}</h2>
         <p className="text-gray-600 mb-4">{event.date}</p>
 
-        <div className="relative">
-          <div className="aspect-w-16 aspect-h-9 mb-4">
-            <img
-              src={`http://localhost:1337` + event.images[currImgIndex].url}
-              alt={`${event.title} - Image ${currImgIndex + 1}`}
-              className="rounded-lg object-center w-full h-[500px]"
-            />
-          </div>
+        <div className="aspect-w-16 aspect-h-9 mb-4">
+          <img
+            src={`http://localhost:1337` + event.images[currImgIndex].url}
+            alt={`${event.title} - Image ${currImgIndex + 1}`}
+            className="rounded-lg object-center w-full h-[500px]"
+          />
         </div>
       </div>
     </div>
